@@ -1,6 +1,11 @@
 public class Tree {
     private Node root;
 
+    // Add a constructor to set the root
+    public Tree(Node root) {
+        this.root = root;
+    }
+
     public void insert(int value) { // Renamed parameter from data to value
         root = insertRec(root, value);
     }
