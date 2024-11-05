@@ -1,15 +1,14 @@
-
 public class Node {
-    private int data;
+    private int value;
     private Node left;
     private Node right;
 
-    public Node(int data) {
-        this.data = data;
+    public Node(int value) {
+        this.value = value;
     }
 
-    public int getData() {
-        return data;
+    public int getValue() {
+        return value;
     }
 
     public Node getLeft() {
@@ -26,5 +25,9 @@ public class Node {
 
     public void setRight(Node right) {
         this.right = right;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
     }
 }

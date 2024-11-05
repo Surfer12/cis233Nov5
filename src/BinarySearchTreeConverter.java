@@ -1,32 +1,30 @@
-
-
 import java.util.Arrays;
 
-public class BSTConverter {
-    private final int[] originalArray;
+public class BinarySearchTreeConverter {
+    private final int[] inputArray;
     private final int[] sortedArray;
-    private Node root;
+    private Node root; // Renamed from rootNode
 
-    public BSTConverter(int[] arr) {
+    public BinarySearchTreeConverter(int[] arr) {
         if (arr == null || arr.length == 0) {
             throw new IllegalArgumentException("Array cannot be null or empty");
         }
-        this.originalArray = arr.clone();
+        this.inputArray = arr.clone();
         this.sortedArray = arr.clone();
         Arrays.sort(this.sortedArray);
     }
 
-    public Node convertToBST() {
-        return root = arrayToBST(0, sortedArray.length - 1);
-    }
-
-    private Node arrayToBST(int left, int right) {
+    private Node buildBSTFromArray(int left, int right) {
         if (left > right) return null;
         int mid = (left + right) / 2;
         Node node = new Node(sortedArray[mid]);
-        node.setLeft(arrayToBST(left, mid - 1));
-        node.setRight(arrayToBST(mid + 1, right));
+        node.setLeft(buildBSTFromArray(left, mid - 1));
+        node.setRight(buildBSTFromArray(mid + 1, right));
         return node;
+    }
+    
+    public Node buildBinarySearchTree() {
+        return root = buildBSTFromArray(0, sortedArray.length - 1); // Updated assignment
     }
 
     public void printTree() {
@@ -37,14 +35,14 @@ public class BSTConverter {
     private void printTreeStructure(Node node, String prefix, boolean isLeft) {
         if (node == null) return;
 
-        System.out.println(prefix + (isLeft ? "├── " : "└── ") + node.getData());
+        System.out.println(prefix + (isLeft ? "├── " : "└── ") + node.getValue());
 
         printTreeStructure(node.getLeft(), prefix + (isLeft ? "│   " : "    "), true);
         printTreeStructure(node.getRight(), prefix + (isLeft ? "│   " : "    "), false);
     }
 
-    public int[] getOriginalArray() {
-        return originalArray.clone();
+    public int[] getInputArray() {
+        return inputArray.clone();
     }
 
     public int[] getSortedArray() {
