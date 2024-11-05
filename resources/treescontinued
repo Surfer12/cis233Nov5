@@ -50,10 +50,48 @@ Here's my plan for adding height and depth definitions to the README.md:
 4. Include code samples for calculations
 5. Show relationship between height and depth
 
-Here's the addition:
+
 
 ```markdown
 ## Tree Height and Depth
+# Tree Height and Depth Breakdown
+
+## Key Concepts
+
+1. **Height**
+   - Measured from bottom to top
+   - Count edges to farthest leaf
+   - Leaf nodes have height 0
+   - Tree height = root's height
+   ***Measure from bottom up, Height is the distance from the root of the tree to the deepest leaf.
+   Focuses on the overall tree : gives you an idea of how 'tall' the tree is.
+   Consistent for thhe whole tree. 
+   It has a single height value for the whole tree.***
+
+2. **Depth**
+   - Measured from top to bottom
+   - Count edges from root
+   - Root has depth 0
+   - Increases by 1 per level
+   ***Measured from the top down, depth is the distaqnce from the root of the tree to a particular node.
+    Focuses on a particular node: gives you an idea of how 'deep' a node is in the tree.
+    Varies for each node in the tree.***
+
+## Visual Example
+```
+         1          → Depth 0, Height 2
+        / \
+       2   3        → Depth 1, Height 1 
+      / \
+     4   5         → Depth 2, Height 0
+```
+
+## Quick Facts
+- Height(Node) = max(Height(Left), Height(Right)) + 1
+- Depth(Node) = Distance from root
+- Height(Leaf) = 0
+- Height(null) = -1
+
 
 ### Definitions
 

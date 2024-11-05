@@ -85,3 +85,92 @@ Post-order traversal:
 ```
 
 This demonstrates the pre-order, in-order, and post-order traversals on a binary tree in Java.
+
+# Plan for Building Tree Height/Depth Implementation
+
+## Steps
+1. Create Node class
+2. Create BinaryTree class
+3. Implement height calculation
+4. Implement depth calculation
+5. Add example tree creation
+6. Add test methods
+
+## Implementation
+
+```java
+// Node.java
+class Node {
+    int data;
+    Node left, right;
+    
+    Node(int item) {
+        data = item;
+        left = right = null;
+    }
+}
+
+// BinaryTree.java
+public class BinaryTree {
+    Node root;
+    
+    // Calculate height of a node
+    public int height(Node node) {
+        if (node == null) {
+            return -1;
+        }
+        return 1 + Math.max(height(node.left), height(node.right));
+    }
+    
+    // Calculate depth of a node
+    public int depth(Node target) {
+        return findDepth(root, target, 0);
+    }
+    
+    private int findDepth(Node current, Node target, int level) {
+        if (current == null) {
+            return -1;
+        }
+        
+        if (current == target) {
+            return level;
+        }
+        
+        int leftDepth = findDepth(current.left, target, level + 1);
+        if (leftDepth != -1) {
+            return leftDepth;
+        }
+        
+        return findDepth(current.right, target, level + 1);
+    }
+    
+    // Example usage
+    public static void main(String[] args) {
+        BinaryTree tree = new BinaryTree();
+        
+        // Create tree:
+        //      1
+        //     / \
+        //    2   3
+        //   / \
+        //  4   5
+        
+        tree.root = new Node(1);
+        tree.root.left = new Node(2);
+        tree.root.right = new Node(3);
+        tree.root.left.left = new Node(4);
+        tree.root.left.right = new Node(5);
+        
+        System.out.println("Height of tree: " + tree.height(tree.root));
+        System.out.println("Depth of node 4: " + tree.depth(tree.root.left.left));
+    }
+}
+```
+
+
+Expected output:
+```
+Height of tree: 2
+Depth of node 4: 2
+```
+
