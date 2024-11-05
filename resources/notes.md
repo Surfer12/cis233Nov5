@@ -1,0 +1,1 @@
+Let's review and refine this content, breaking it down into separate diagrams to enhance clarity. The purpose and function of each process could be clearer, so let's focus on restructuring it for better understanding and accuracy. Could you also rework it to ensure alignment with the intended goals?
