@@ -1,9 +1,10 @@
+package Classes;
 import java.util.Arrays;
 
 public class BSTConverter {
     private final int[] originalArray;
     private final int[] sortedArray;
-    private TreeNode root;
+    private Node root;
 
     public BSTConverter(int[] arr) {
         if (arr == null || arr.length == 0) {
@@ -14,25 +15,16 @@ public class BSTConverter {
         Arrays.sort(this.sortedArray);
     }
 
-    static class TreeNode {
-        int val;
-        TreeNode left, right;
-        
-        TreeNode(int val) {
-            this.val = val;
-        }
-    }
-
-    public TreeNode convertToBST() {
+    public Node convertToBST() {
         return root = arrayToBST(0, sortedArray.length - 1);
     }
 
-    private TreeNode arrayToBST(int left, int right) {
+    private Node arrayToBST(int left, int right) {
         if (left > right) return null;
         int mid = (left + right) / 2;
-        TreeNode node = new TreeNode(sortedArray[mid]);
-        node.left = arrayToBST(left, mid - 1);
-        node.right = arrayToBST(mid + 1, right);
+        Node node = new Node(sortedArray[mid]);
+        node.setLeft(arrayToBST(left, mid - 1));
+        node.setRight(arrayToBST(mid + 1, right));
         return node;
     }
 
@@ -41,13 +33,13 @@ public class BSTConverter {
         printTreeStructure(root, "", true);
     }
 
-    private void printTreeStructure(TreeNode node, String prefix, boolean isLeft) {
+    private void printTreeStructure(Node node, String prefix, boolean isLeft) {
         if (node == null) return;
-        
-        System.out.println(prefix + (isLeft ? "├── " : "└── ") + node.val);
-        
-        printTreeStructure(node.left, prefix + (isLeft ? "│   " : "    "), true);
-        printTreeStructure(node.right, prefix + (isLeft ? "│   " : "    "), false);
+
+        System.out.println(prefix + (isLeft ? "├── " : "└── ") + node.getData());
+
+        printTreeStructure(node.getLeft(), prefix + (isLeft ? "│   " : "    "), true);
+        printTreeStructure(node.getRight(), prefix + (isLeft ? "│   " : "    "), false);
     }
 
     public int[] getOriginalArray() {
@@ -61,11 +53,11 @@ public class BSTConverter {
     public static void main(String[] args) {
         int[] input = {7, 3, 9, 1, 5, 11, 4, 6, 8};
         BSTConverter converter = new BSTConverter(input);
-        
+
         System.out.println("Original array: " + Arrays.toString(converter.getOriginalArray()));
         System.out.println("Sorted array: " + Arrays.toString(converter.getSortedArray()));
-        
-        TreeNode root = converter.convertToBST();
+
+        Node root = converter.convertToBST();
         converter.printTree();
     }
     
