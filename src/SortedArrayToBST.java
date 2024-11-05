@@ -13,7 +13,6 @@ public class SortedArrayToBST {
         int val;
         TreeNode left;
         TreeNode right;
-        
         TreeNode(int val) {
             this.val = val;
         }
@@ -34,13 +33,9 @@ public class SortedArrayToBST {
         }
         
         public TreeNode convertToBST() {
-            return root = sortedArrayToBST(0, sortedArr.length - 1/ 2);
+            return root = sortedArrayToBST(0, sortedArr.length - 1);
         }
         
-  
-        
-        
-    
     public static void main(String[] args) {
         int[] arr = {80, 70, 60, 50, 40, 30};
         ArrayConverter converter = new ArrayConverter(arr);
@@ -71,3 +66,36 @@ BST In-order traversal:
 ```
 
 The resulting BST will be height-balanced with minimal height. */
+private TreeNode sortedArrayToBST(int start, int end) {
+    if (start > end) return null;
+    
+    int mid = (start + end) / 2;
+    TreeNode node = new TreeNode(sortedArr[mid]);
+    
+    node.left = sortedArrayToBST(start, mid - 1);
+    node.right = sortedArrayToBST(mid + 1, end);
+    
+    return node;
+}
+
+public int[] getOriginalArray() {
+    return Arrays.copyOf(originalArr, originalArr.length);
+}
+
+public int[] getSortedArray() {
+    return Arrays.copyOf(sortedArr, sortedArr.length);
+}
+
+public void printInOrder() {
+    System.out.println("BST In-order traversal:");
+    printInOrder(root);
+    System.out.println();
+}
+
+private void printInOrder(TreeNode node) {
+    if (node == null) return;
+    printInOrder(node.left);
+    System.out.print(node.val + " ");
+    printInOrder(node.right);
+}
+    }
