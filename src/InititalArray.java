@@ -1,11 +1,11 @@
 import java.util.Arrays;
 
 public class InititalArray {
-    static class SortedArray {
+    static class ArraySorter {
         private int[] originalArr;
         private int[] sortedArr;
 
-        public CopyArray(int[] arr) {
+        public SortedArray(int[] arr) {
             if (arr == null || arr.length == 0) {
                 throw new IllegalArgumentException("Array cannot be null or empty");
             }    
@@ -29,9 +29,10 @@ public class InititalArray {
     }
 
     public static void main(String[] args) {
-        int[] arr = {80, 70, 60, 50, 40, 30};
-        SortedArray sortedArray = new SortedArray(arr);
+        int[] arr = {3, 1, 2, 4, 5};
+        ArraySorter sortedArray = new ArraySorter(arr);
+        int[] sortedArr = sortedArray.sortArray();
         System.out.println("Original array: " + Arrays.toString(sortedArray.getOriginalArray()));
-        System.out.println("Sorted array: " + Arrays.toString(sortedArray.sortArray()));
+        System.out.println("Sorted array: " + Arrays.toString
     }
 }
