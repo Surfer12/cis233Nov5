@@ -1,7 +1,8 @@
 import java.util.Arrays;
-import javax.swing.tree.TreeNode;
+// import javax.swing.tree.TreeNode;
 
-public class InititalArray {
+// Define a proper TreeNode class
+class TreeNode {
     int val;
     TreeNode left;
     TreeNode right;
@@ -9,8 +10,10 @@ public class InititalArray {
     TreeNode(int val) {
         this.val = val;
     }
+}
 
-    class node {
+public class InititalArray {
+    class tree {
         int data;
         node left;
         node right;
@@ -93,6 +96,7 @@ private TreeNode sortedArrayToBST(int start, int end) {
         System.out.println("Sorted Array: " + Arrays.toString(sorter.getSortedArray()));
 
         TreeNode root = sorter.convertToBST();
+
         System.out.println("Root Node: " + root.val);
         sorter.printInOrder();
     }
