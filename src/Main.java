@@ -1,7 +1,7 @@
 import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
-        int[] input = {10, 20, 30, 40, 50, 60, 70};
+        int[] input = {50, 20, 70, 10, 60, 30, 40, 80};
             BSTConverter converter = new BSTConverter(input);
     
             System.out.println("Original array: " + Arrays.toString(converter.getOriginalArray()));
