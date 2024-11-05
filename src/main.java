@@ -9,8 +9,25 @@
 // Find the middle element of the array and make it the root of the tree. Then, recursively construct the left and right halves of the tree.
  */
 
-public class main {
+import java.util.Arrays;
+
+public class Main {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+        // Re-add the main method to execute the program using the consolidated Tree class
+        Tree tree = new Tree();
+        tree.insert(5);
+        tree.insert(3);
+        tree.insert(7);
+        tree.inOrderTraversal();
+        
+        // Optionally, demonstrate array to BST conversion
+        int[] input = {10, 20, 30, 40, 50, 60, 70};
+        BSTConversion.BSTConverter converter = new InitialArrayv1.BSTConverter(input);
+        
+        System.out.println("\nOriginal array: " + Arrays.toString(converter.getOriginalArray()));
+        System.out.println("Sorted array: " + Arrays.toString(converter.getSortedArray()));
+        
+        InitialArrayv1.TreeNode root = converter.convertToBST();
+        converter.printTree();
     }
 }
