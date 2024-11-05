@@ -1,24 +1,35 @@
 import java.util.Arrays;
 
 public class InititalArray {
-    class SortedArray {
-        int[] treeArr;
+    static class SortedArray {
+        private final int[] originalArr;
+        private int[] sortedArr;
 
         public SortedArray(int[] arr) {
-            this.treeArr = arr;
+            // Create a copy to preserve the original array
+            this.originalArr = Arrays.copyOf(arr, arr.length);
+            this.sortedArr = Arrays.copyOf(arr, arr.length);
         }
 
         public int[] sortArray() {
-            Arrays.sort(treeArr);
-            return treeArr;
+            Arrays.sort(sortedArr);
+            return sortedArr;
+        }
+
+        public int[] getOriginalArray() {
+            return Arrays.copyOf(originalArr, originalArr.length);
+        }
+
+        public int[] getSortedArray() {
+            return Arrays.copyOf(sortedArr, sortedArr.length);
         }
     }
 
     public static void main(String[] args) {
         int[] arr = {80, 70, 60, 50, 40, 30};
-        InititalArray initArray = new InititalArray();
-        SortedArray sortedArray = initArray.new SortedArray(arr);
-        int[] sortedArr = sortedArray.sortArray();
-        System.out.println(Arrays.toString(sortedArr));
+        SortedArray sortedArray = new SortedArray(arr);
+        
+        System.out.println("Original array: " + Arrays.toString(sortedArray.getOriginalArray()));
+        System.out.println("Sorted array: " + Arrays.toString(sortedArray.sortArray()));
     }
 }
