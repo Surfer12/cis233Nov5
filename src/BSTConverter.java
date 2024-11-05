@@ -1,4 +1,5 @@
-package Classes;
+
+
 import java.util.Arrays;
 
 public class BSTConverter {
@@ -50,22 +51,8 @@ public class BSTConverter {
         return sortedArray.clone();
     }
 
-    public static void main(String[] args) {
-        int[] input = {7, 3, 9, 1, 5, 11, 4, 6, 8};
-        BSTConverter converter = new BSTConverter(input);
-
-        System.out.println("Original array: " + Arrays.toString(converter.getOriginalArray()));
-        System.out.println("Sorted array: " + Arrays.toString(converter.getSortedArray()));
-
-        Node root = converter.convertToBST();
-        converter.printTree();
-    }
-    
-    /* Run in VS Code:
-    ```bash
-    javac InitialArrayv1.java
-    java InitialArrayv1
-    ```
+   
+    /*
     
     Expected output:
     ```
