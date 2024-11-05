@@ -1,6 +1,7 @@
 import java.util.Arrays;
 
 public class Main {
+    @SuppressWarnings("unused") // Node root is used to construct the tree 
     public static void main(String[] args) {
         int[] inputValues = {50, 20, 70, 10, 60, 30, 40, 80}; // Renamed variable
         BinarySearchTreeConverter bstConverter = new BinarySearchTreeConverter(inputValues); // Updated variable usage
