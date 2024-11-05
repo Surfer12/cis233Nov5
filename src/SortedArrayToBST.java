@@ -37,40 +37,9 @@ public class SortedArrayToBST {
             return root = sortedArrayToBST(0, sortedArr.length - 1/ 2);
         }
         
-        private TreeNode sortedArrayToBST(int start, int end) {
-            if (start > end) return null;
-            
-            int mid = (start + end) / 2;
-            TreeNode node = new TreeNode(sortedArr[mid]);
-            
-            node.left = sortedArrayToBST(start, mid - 1);
-            node.right = sortedArrayToBST(mid + 1, end);
-            
-            return node;
-        }
+  
         
-        // Helper method to print BST in-order
-        public void printInOrder() {
-            System.out.println("BST In-order traversal:");
-            inOrderTraversal(root);
-            System.out.println();
-        }
         
-        private void inOrderTraversal(TreeNode node) {
-            if (node == null) return;
-            inOrderTraversal(node.left);
-            System.out.print(node.val + " ");
-            inOrderTraversal(node.right);
-        }
-        
-        public int[] getOriginalArray() {
-            return Arrays.copyOf(originalArr, originalArr.length);
-        }
-        
-        public int[] getSortedArray() {
-            return Arrays.copyOf(sortedArr, sortedArr.length);
-        }
-    }
     
     public static void main(String[] args) {
         int[] arr = {80, 70, 60, 50, 40, 30};
