@@ -1,12 +1,9 @@
-class node {
+public class Node {
     int data;
-    node left;
-    node right;
+    Node left;
+    Node right;
 
-    node(int data) {
+    public Node(int data) {
         this.data = data;
-        this.left = null;
-        this.right = null;
     }
-
 }
