@@ -1,23 +1,22 @@
 public class Tree {
     private Node root;
 
-    // Add a constructor to set the root
     public Tree(Node root) {
         this.root = root;
     }
 
-    public void insert(int value) { // Renamed parameter from data to value
+    public void insert(int value) {
         root = insertRec(root, value);
     }
 
-    private Node insertRec(Node root, int value) { // Renamed parameter from data to value
+    private Node insertRec(Node root, int value) {
         if (root == null) {
             root = new Node(value);
             return root;
         }
-        if (value < root.getValue()) { // Updated method from getData() to getValue()
+        if (value < root.getValue()) {
             root.setLeft(insertRec(root.getLeft(), value));
-        } else if (value > root.getValue()) { // Updated method from getData() to getValue()
+        } else if (value > root.getValue()) {
             root.setRight(insertRec(root.getRight(), value));
         }
         return root;
@@ -34,28 +33,28 @@ public class Tree {
     private void inOrderRec(Node node) {
         if (node != null) {
             inOrderRec(node.getLeft());
-            System.out.print(node.getValue() + " "); // Updated method from getData() to getValue()
+            System.out.print(node.getValue() + " ");
             inOrderRec(node.getRight());
         }
     }
-    
-    public void preOrderTraversal() { // Added method
+
+    public void preOrderTraversal() {
         preOrderRec(root);
     }
 
-    private void preOrderRec(Node node) { // Added method
+    private void preOrderRec(Node node) {
         if (node != null) {
             System.out.print(node.getValue() + " ");
             preOrderRec(node.getLeft());
             preOrderRec(node.getRight());
         }
     }
-    
-    public void postOrderTraversal() { // Added method
+
+    public void postOrderTraversal() {
         postOrderRec(root);
     }
 
-    private void postOrderRec(Node node) { // Added method
+    private void postOrderRec(Node node) {
         if (node != null) {
             postOrderRec(node.getLeft());
             postOrderRec(node.getRight());
