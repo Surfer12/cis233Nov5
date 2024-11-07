@@ -27,20 +27,23 @@ public class BinarySearchTreeConverter {
         return root = buildBSTFromArray(0, sortedArray.length - 1); 
     }
 
-    public void printTree() {
+        public void printTree() {
         System.out.println("\nTree Structure:");
-        printTreeStructure(root, "", true);
+        printTreeStructure(root, 0);
     }
 
-    private void printTreeStructure(Node node, String prefix, boolean isLeft) {
+      private void printTreeStructure(Node node, int level) {
         if (node == null) return;
-
-        System.out.println(prefix + (isLeft ? "├── " : "└── ") + node.getValue());
-
-        printTreeStructure(node.getLeft(), prefix + (isLeft ? "│   " : "    "), true);
-        printTreeStructure(node.getRight(), prefix + (isLeft ? "│   " : "    "), false);
+    
+        printTreeStructure(node.getRight(), level + 1);
+    
+        for (int i = 0; i < level; i++) {
+            System.out.print("    ");
+        }
+        System.out.println(node.getValue());
+    
+        printTreeStructure(node.getLeft(), level + 1);
     }
-
     public int[] getInputArray() {
         return inputArray.clone();
     }
