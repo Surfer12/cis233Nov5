@@ -3,7 +3,7 @@ import java.util.Arrays;
 public class BinarySearchTreeConverter {
     private final int[] inputArray;
     private final int[] sortedArray;
-    private Node root; // Renamed from rootNode
+    private Node root; 
 
     public BinarySearchTreeConverter(int[] arr) {
         if (arr == null || arr.length == 0) {
@@ -24,7 +24,7 @@ public class BinarySearchTreeConverter {
     }
     
     public Node buildBinarySearchTree() {
-        return root = buildBSTFromArray(0, sortedArray.length - 1); // Updated assignment
+        return root = buildBSTFromArray(0, sortedArray.length - 1); 
     }
 
     public void printTree() {
